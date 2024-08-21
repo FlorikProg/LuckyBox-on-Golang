@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="file/css/styl.css">
+    <title>Lucky Box</title>
+</head>
+<body>
+<!-- Top Clovers -->
+<img src="file/img/chetyrehlistnij_klever.png" class="clover top-clover top-left-clover" alt="Clover">
+<img src="file/img/chetyrehlistnij_klever.png" class="clover top-clover top-right-clover" alt="Clover">
+
+<!-- Middle Clovers -->
+<img src="file/img/chetyrehlistnij_klever.png" class="clover middle-clover middle-left-clover" alt="Clover">
+<img src="file/img/chetyrehlistnij_klever.png" class="clover middle-clover middle-right-clover" alt="Clover">
+
+<!-- Bottom Clovers -->
+<img src="file/img/chetyrehlistnij_klever.png" class="clover bottom-clover bottom-left-clover" alt="Clover">
+<img src="file/img/chetyrehlistnij_klever.png" class="clover bottom-clover bottom-right-clover" alt="Clover">
+
+<div class="container">
+    <div>
+        <h1>Lucky Box</h1>
+        <img id="boxImage" class="box-img" src="file/img/close.png" alt="Closed Box">
+        <button id="openButton">Open</button>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+<script>
+    document.getElementById('openButton').addEventListener('click', function() {
+        var boxImage = document.getElementById('boxImage');
+        var button = document.getElementById('openButton');
+
+        // Удаление кнопки сразу
+        button.remove();
+
+        // Добавление класса fade-out для начала перехода
+        boxImage.classList.add('fade-out');
+
+        // Ожидание завершения перехода
+        setTimeout(function() {
+            // Генерация случайного числа между 0 и 1
+            var randomNumber = Math.random();
+
+            // 80% вероятность показать "open.png", 20% вероятность показать алмазный эмодзи
+            if (randomNumber < 0.8) {
+                boxImage.src = 'file/img/open.png'; // Изменить на путь к изображению открытой коробки
+            } else {
+                // Заменить изображение на алмазный эмодзи
+                boxImage.style.display = 'none'; // Скрыть элемент изображения
+                var emoji = document.createElement('span');
+                var text_win = document.createElement('h2');
+                text_win.textContent = 'ВЫЙГРЫШ';
+                emoji.textContent = '💎';
+                emoji.className = 'diamond-emoji'; // Применить класс алмазного эмодзи
+                boxImage.parentElement.appendChild(emoji);
+                boxImage.parentElement.appendChild(text_win);
+
+                // Получить позицию алмазного эмодзи
+                var rect = emoji.getBoundingClientRect();
+                var x = (rect.left + rect.right) / 2 / window.innerWidth;
+                var y = (rect.top + rect.bottom) / 2 / window.innerHeight;
+
+                // Запуск эффекта конфетти из позиции алмаза
+                confetti({
+                    particleCount: 200, // Количество частиц
+                    spread: 360, // Распределить частицы во всех направлениях
+                    origin: { x: x, y: y } // Начать с позиции алмаза
+                });
+
+                // Вызов API для увеличения счетчика выигрышей
+                fetch('/increment-win', { method: 'POST' }).then(response => {
+                    if (!response.ok) {
+                        console.error('Ошибка при увеличении счетчика выигрышей');
+                    }
+                });
+            }
+
+            // Удаление класса fade-out для повторного отображения изображения
+            boxImage.classList.remove('fade-out');
+        }, 500); // Соответствовать продолжительности CSS-перехода
+    });
+</script>
+</body>
+</html>

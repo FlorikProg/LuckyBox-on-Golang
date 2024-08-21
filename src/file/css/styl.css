@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Play:wght@400;700&display=swap');
+
+body, html {
+    height: 100%; /* Ensure the body takes full height */
+    margin: 0; /* Remove default margin */
+    display: flex; /* Enable Flexbox on the body */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+    background-color: #121212;
+    background-image: url("C:\Users\Roman\Desktop\Web\src\file\img\decor.png");
+    background-size: 2000px; /* Dark background color */
+    color: #ffffff; /* Light text color for contrast */
+    font-family: "Nunito", sans-serif; /* Font style */
+    padding-top: 50px; /* Уменьшено для уменьшения отступа сверху */
+}
+
+.container {
+    display: flex; /* Enable Flexbox on the container */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+    text-align: center; /* Center text */
+    margin-top: 10px; /* Уменьшено для уменьшения отступа сверху */
+}
+
+h1 {
+    margin-bottom: 10px; /* Space below the heading */
+    font-size: 40px; /* Уменьшено для уменьшения размера заголовка */
+}
+
+.box {
+    background-color: #1e88e5; /* Box background color */
+    padding: 20px; /* Уменьшено для уменьшения отступа внутри коробки */
+    border-radius: 10px; /* Rounded corners for the box */
+    margin-bottom: 10px; /* Уменьшено для уменьшения отступа снизу */
+}
+
+.box-img {
+    max-width: 300px; /* Уменьшено для уменьшения размера изображения */
+    margin-bottom: 20px; /* Уменьшено для уменьшения отступа снизу от изображения */
+    padding-top: 20px; /* Уменьшено для уменьшения отступа сверху */
+    z-index: 1;
+    position: relative;
+    animation: move 3s linear infinite; /* Изменено на linear для постоянной скорости */
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+
+.box-img.fade-out {
+    opacity: 0;
+}
+
+@keyframes move {
+    0% {
+        top: 0; /* Начальная позиция */
+    }
+    50% {
+        top: -20px; /* Подъем на 20 пикселей */
+    }
+    100% {
+        top: 0; /* Возвращение на исходную позицию */
+    }
+}
+
+button {
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    width: 200px; /* Уменьшено для уменьшения ширины кнопки */
+    height: 50px; /* Уменьшено для уменьшения высоты кнопки */
+    font-size: 20px; /* Уменьшено для уменьшения размера текста кнопки */
+    border: none; /* Remove default border */
+    border-radius: 50px; /* Уменьшено для уменьшения радиуса углов кнопки */
+    background-color: white; /* Button background color */
+    color: #121212; /* Button text color */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    display: flex; /* Enable Flexbox on the button */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    text-align: center; /* Center text */
+    margin: 0 auto; /* Center the button horizontally within its parent */
+    padding: 10px; /* Уменьшено для уменьшения отступа внутри кнопки */
+    transition: 0.4s;
+}
+
+button:hover {
+    background-color: #ffffff; /* Lighter background on hover */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    scale: 1.05; /* Уменьшено для уменьшения эффекта увеличения */
+}
+
+.clover {
+    position: absolute;
+    width: 60px; /* Уменьшено для уменьшения размера изображений клевера */
+    height: auto;
+    transform: rotate(var(--rotation)); /* Apply rotation based on a custom property */
+    opacity: 0.7; /* Set 70% transparency */
+}
+
+.top-clover {
+    top: 30px; /* Уменьшено для уменьшения позиции сверху */
+}
+
+.top-left-clover {
+    left: 10px; /* Offset from the left edge */
+    --rotation: -10deg; /* Rotation angle for top left clover */
+}
+
+.top-right-clover {
+    right: 10px; /* Offset from the right edge */
+    --rotation: 10deg; /* Rotation angle for top right clover */
+}
+
+.middle-clover {
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%) rotate(var(--rotation));
+}
+
+.middle-left-clover {
+    left: -30px; /* Уменьшено для уменьшения отступа слева */
+    --rotation: -15deg; /* Rotation angle for middle left clover */
+}
+
+.middle-right-clover {
+    right: 10px; /* Уменьшено для уменьшения отступа справа */
+    --rotation: -20deg; /* Rotation angle for middle right clover */
+}
+
+.bottom-clover {
+    bottom: -50px; /* Уменьшено для уменьшения позиции снизу */
+}
+
+.bottom-left-clover {
+    left: 10px; /* Offset from the left edge */
+    --rotation: -5deg; /* Rotation angle for bottom left clover */
+}
+
+.bottom-right-clover {
+    right: 10px; /* Offset from the right edge */
+    --rotation: 5deg; /* Rotation angle for bottom right clover */
+}
+
+.diamond-emoji {
+    font-size: 150px; /* Уменьшено для уменьшения размера эмодзи */
+}
+
+h2 {
+    font-size: 40px; /* Уменьшено для уменьшения размера заголовка h2 */
+    padding-top: 50px; /* Уменьшено для уменьшения отступа сверху */
+}
