@@ -7,7 +7,6 @@ body, html {
     flex-direction: column; /* Stack children vertically */
     align-items: center; /* Center children horizontally */
     background-color: #121212;
-    background-image: url("C:\Users\Roman\Desktop\Web\src\file\img\decor.png");
     background-size: 2000px; /* Dark background color */
     color: #ffffff; /* Light text color for contrast */
     font-family: "Nunito", sans-serif; /* Font style */
