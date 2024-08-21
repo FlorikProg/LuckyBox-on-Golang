@@ -9,7 +9,7 @@ import (
 
 func homePage(w http.ResponseWriter, r *http.Request) {
 	log.Println("Получен запрос на домашнюю страницу")
-	tmpl, err := template.ParseFiles("C:\\Users\\Roman\\Desktop\\Web\\src\\templates\\index.html")
+	tmpl, err := template.ParseFiles("templates\\index.html")
 	if err != nil {
 		log.Printf("Ошибка при парсинге шаблона: %v", err)
 		http.Error(w, "Внутренняя ошибка сервера", http.StatusInternalServerError)
